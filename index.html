@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart Immigration</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
-      background: #f4f6fb;
+      background: linear-gradient(180deg, #f6f8fc 0%, #eef3fb 100%);
       color: #111827;
     }
 
@@ -27,15 +25,18 @@
       flex-direction: column;
     }
 
-    /* Header */
     .top-header {
-      height: 82px;
-      background: #ffffff;
+      height: 84px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 28px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
 
     .brand {
@@ -44,19 +45,14 @@
       gap: 14px;
     }
 
-    .brand-logo {
-      width: 56px;
-      height: 56px;
+    .brand-logo-img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
       border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1c57af, #4e8ef0);
-      color: #fff;
-      font-size: 28px;
-      font-weight: 800;
-      box-shadow: 0 10px 20px rgba(28, 87, 175, 0.18);
+      background: #fff;
       flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
     }
 
     .brand-text {
@@ -64,7 +60,7 @@
     }
 
     .brand-text .main {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       color: #123a78;
     }
@@ -78,51 +74,113 @@
     .top-menu {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       font-size: 15px;
       color: #1f2937;
       flex-wrap: wrap;
     }
 
     .top-menu a {
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .login-btn {
       margin-left: 6px;
       background: linear-gradient(180deg, #184c97 0%, #123a78 100%);
       color: #fff !important;
-      padding: 12px 28px;
+      padding: 12px 26px;
       border-radius: 16px;
       font-weight: 700;
-      box-shadow: 0 8px 18px rgba(18, 58, 120, 0.18);
+      box-shadow: 0 10px 20px rgba(18, 58, 120, 0.18);
     }
 
-    /* Hero */
     .hero {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px 20px;
+      padding: 54px 20px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(20px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      background: #bfdbfe;
+      top: 40px;
+      left: -80px;
+    }
+
+    .hero::after {
+      width: 320px;
+      height: 320px;
+      background: #fde68a;
+      right: -100px;
+      bottom: 10px;
     }
 
     .hero-inner {
       width: 100%;
-      max-width: 1100px;
-      text-align: center;
+      max-width: 1120px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .hero-title {
-      font-size: clamp(48px, 6vw, 78px);
+      font-size: clamp(48px, 6vw, 80px);
       font-weight: 900;
-      line-height: 1.12;
+      line-height: 1.1;
       letter-spacing: -2px;
-      color: #000;
-      margin: 0 0 38px;
+      margin: 0 0 34px;
+      color: #0f172a;
+      text-shadow: 0 3px 0 rgba(255,255,255,0.7);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: #5b6474;
+      margin: -8px 0 26px;
+      line-height: 1.7;
+    }
+
+    .how-character {
+      position: absolute;
+      right: -36px;
+      top: -132px;
+      width: 210px;
+      max-width: 28vw;
+      z-index: 3;
+      pointer-events: none;
+      animation: floaty 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 20px 30px rgba(59, 130, 246, 0.12));
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(-1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
     }
 
     .search-wrap {
@@ -138,8 +196,8 @@
 
     .search-box {
       width: 100%;
-      min-height: 82px;
-      background: #fff;
+      min-height: 84px;
+      background: rgba(255,255,255,0.96);
       border: 4px solid #1d4f99;
       border-radius: 999px;
       display: flex;
@@ -147,41 +205,43 @@
       justify-content: space-between;
       gap: 14px;
       padding: 0 22px 0 28px;
-      box-shadow: 0 10px 24px rgba(29, 79, 153, 0.08);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 18px 30px rgba(29, 79, 153, 0.09);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
     .search-box:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(29, 79, 153, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 24px 36px rgba(29, 79, 153, 0.14);
+      border-color: #17438a;
     }
 
     .search-placeholder {
       text-align: left;
       color: #9ca3af;
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.4;
       flex: 1;
       word-break: keep-all;
+      font-weight: 500;
     }
 
     .search-icons {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #1f2937;
       flex-shrink: 0;
     }
 
     .icon-circle {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #eff6ff;
       font-size: 18px;
+      color: #1e3a8a;
     }
 
     .search-guide {
@@ -190,7 +250,6 @@
       color: #64748b;
     }
 
-    /* Kakao box */
     .kakao-wrap {
       width: 100%;
       max-width: 760px;
@@ -204,21 +263,21 @@
 
     .kakao-box {
       width: 100%;
-      background: linear-gradient(135deg, #fff9db 0%, #fff3b8 100%);
-      border: 1px solid #f2d75c;
+      background: linear-gradient(135deg, #fff8d7 0%, #fff1ad 100%);
+      border: 1px solid #e8c93f;
       border-radius: 24px;
       padding: 20px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      box-shadow: 0 10px 24px rgba(234, 179, 8, 0.08);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-shadow: 0 16px 28px rgba(234, 179, 8, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .kakao-box:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(234, 179, 8, 0.13);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 34px rgba(234, 179, 8, 0.18);
     }
 
     .kakao-left {
@@ -229,25 +288,37 @@
     }
 
     .kakao-icon {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
       background: #fee500;
       color: #111827;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 24px;
       flex-shrink: 0;
       box-shadow: inset 0 -2px 0 rgba(0,0,0,0.08);
     }
 
-    .kakao-text .title {
-      font-size: 20px;
+    .kakao-text .badge {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 800;
+      background: rgba(255,255,255,0.6);
+      color: #7c5b00;
+    }
+
+    .kakao-text .title {
+      font-size: 22px;
+      font-weight: 900;
       color: #111827;
       margin-bottom: 4px;
+      letter-spacing: -0.5px;
     }
 
     .kakao-text .desc {
@@ -257,14 +328,45 @@
     }
 
     .kakao-arrow {
-      font-size: 28px;
+      font-size: 32px;
       color: #111827;
       flex-shrink: 0;
+      font-weight: 700;
     }
 
-    /* Footer banner */
+    .quick-info {
+      width: 100%;
+      max-width: 760px;
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .quick-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #dbe4f0;
+      border-radius: 18px;
+      padding: 16px;
+      text-align: left;
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .quick-card .title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #123a78;
+      margin-bottom: 6px;
+    }
+
+    .quick-card .desc {
+      font-size: 13px;
+      color: #5b6474;
+      line-height: 1.6;
+    }
+
     .bottom-banner {
-      background: linear-gradient(180deg, #eef2f7 0%, #e7ebf3 100%);
+      background: linear-gradient(180deg, #edf2f7 0%, #e6ebf3 100%);
       border-top: 1px solid #d8dee8;
       padding: 22px 26px;
     }
@@ -291,7 +393,6 @@
       padding: 16px 22px;
       display: inline-block;
       width: fit-content;
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
     }
 
     .banner-title {
@@ -323,7 +424,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.04);
     }
 
     .info-card .icon {
@@ -344,8 +444,7 @@
       line-height: 1.6;
     }
 
-    /* Mobile */
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .top-header {
         height: auto;
         padding: 18px 16px;
@@ -360,25 +459,24 @@
       }
 
       .hero-title {
-        font-size: 40px;
-        margin-bottom: 26px;
+        font-size: 42px;
+        margin-bottom: 22px;
       }
 
-      .search-box {
-        min-height: 68px;
-        padding: 0 18px 0 20px;
+      .hero-sub {
+        font-size: 16px;
       }
 
-      .search-placeholder {
-        font-size: 15px;
+      .how-character {
+        position: static;
+        display: block;
+        margin: 0 auto 14px;
+        width: 150px;
+        max-width: 40vw;
       }
 
-      .kakao-box {
-        padding: 18px;
-      }
-
-      .kakao-text .title {
-        font-size: 18px;
+      .quick-info {
+        grid-template-columns: 1fr;
       }
 
       .banner-inner {
@@ -392,14 +490,13 @@
       }
 
       .hero-title {
-        font-size: 32px;
+        font-size: 34px;
         letter-spacing: -1px;
       }
 
-      .brand-logo {
-        width: 48px;
-        height: 48px;
-        font-size: 24px;
+      .brand-logo-img {
+        width: 46px;
+        height: 46px;
       }
 
       .brand-text .main {
@@ -410,6 +507,15 @@
         font-size: 12px;
       }
 
+      .search-box {
+        min-height: 70px;
+        padding: 0 18px 0 20px;
+      }
+
+      .search-placeholder {
+        font-size: 15px;
+      }
+
       .search-icons {
         gap: 6px;
       }
@@ -418,6 +524,10 @@
         width: 34px;
         height: 34px;
         font-size: 16px;
+      }
+
+      .kakao-box {
+        padding: 18px;
       }
 
       .kakao-left {
@@ -431,7 +541,7 @@
       }
 
       .kakao-text .title {
-        font-size: 16px;
+        font-size: 17px;
       }
 
       .kakao-text .desc {
@@ -456,7 +566,7 @@
   <div class="page">
     <header class="top-header">
       <div class="brand">
-        <div class="brand-logo">SI</div>
+        <img src="logo.jpg" alt="Smart Immigration 로고" class="brand-logo-img">
         <div class="brand-text">
           <div class="main">Smart Immigration</div>
           <div class="sub">Visa Consulting Platform</div>
@@ -474,19 +584,24 @@
 
     <main class="hero">
       <div class="hero-inner">
-        <div class="hero-title">무엇을 도와드릴까요??</div>
+        <div class="hero-visual">
+          <img src="how.png" alt="HOW 캐릭터" class="how-character">
 
-        <div class="search-wrap">
-          <a class="search-link" href="https://chatgpt.com/share/69c36d59-6d2c-83a9-8252-d88787e84271" target="_blank" rel="noopener noreferrer">
-            <div class="search-box">
-              <div class="search-placeholder">예: E-9에서 E-7-4로 비자 바꾸고 싶어요</div>
-              <div class="search-icons">
-                <div class="icon-circle">🎤</div>
-                <div class="icon-circle">🌐</div>
+          <div class="hero-title">무엇을 도와드릴까요??</div>
+          <div class="hero-sub">비자 상담부터 자가진단, 실시간 문의까지 한 번에 연결해드립니다.</div>
+
+          <div class="search-wrap">
+            <a class="search-link" href="https://chatgpt.com/share/69c36d59-6d2c-83a9-8252-d88787e84271" target="_blank" rel="noopener noreferrer">
+              <div class="search-box">
+                <div class="search-placeholder">예: E-9에서 E-7-4로 비자 바꾸고 싶어요</div>
+                <div class="search-icons">
+                  <div class="icon-circle">🎤</div>
+                  <div class="icon-circle">🌐</div>
+                </div>
               </div>
-            </div>
-          </a>
-          <div class="search-guide">입력창을 클릭하면 자가진단 페이지로 이동합니다.</div>
+            </a>
+            <div class="search-guide">입력창을 클릭하면 자가진단 페이지로 이동합니다.</div>
+          </div>
         </div>
 
         <div class="kakao-wrap">
@@ -495,6 +610,7 @@
               <div class="kakao-left">
                 <div class="kakao-icon">톡</div>
                 <div class="kakao-text">
+                  <div class="badge">실시간 연결 가능</div>
                   <div class="title">카카오 실시간 상담</div>
                   <div class="desc">지금 바로 1:1 오픈채팅으로 연결하여 실제 진행 가능 여부와 준비서류를 안내해드립니다.</div>
                 </div>
@@ -502,6 +618,21 @@
               <div class="kakao-arrow">›</div>
             </div>
           </a>
+        </div>
+
+        <div class="quick-info">
+          <div class="quick-card">
+            <div class="title">빠른 자가진단</div>
+            <div class="desc">E-7-4 / E-7-4R 조건을 빠르게 점검할 수 있습니다.</div>
+          </div>
+          <div class="quick-card">
+            <div class="title">실무형 안내</div>
+            <div class="desc">서류 준비, 진행 가능 여부, 추천서 관련 상담까지 이어집니다.</div>
+          </div>
+          <div class="quick-card">
+            <div class="title">즉시 상담 연결</div>
+            <div class="desc">결과 확인 후 카카오톡으로 바로 문의할 수 있습니다.</div>
+          </div>
         </div>
       </div>
     </main>

@@ -6,17 +6,20 @@
   <title>한국 비자 상담 & 자가진단</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
       background: #f6f8fc;
       color: #1f2937;
     }
+
     .wrap {
       max-width: 1080px;
       margin: 0 auto;
       padding: 24px;
     }
+
     .hero {
       background: linear-gradient(135deg, #ffffff 0%, #eef4ff 100%);
       border: 1px solid #dbe5f3;
@@ -24,6 +27,7 @@
       padding: 56px 36px;
       box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
     }
+
     .topbar {
       display: flex;
       justify-content: space-between;
@@ -31,59 +35,21 @@
       margin-bottom: 24px;
       gap: 16px;
     }
+
     .logo {
       font-weight: 800;
       font-size: 22px;
       color: #123a78;
     }
+
     .nav {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
       color: #4b5563;
       font-size: 14px;
     }
-    h1 {
-      font-size: clamp(34px, 6vw, 56px);
-      line-height: 1.15;
-      margin: 12px 0 16px;
-      color: #0f172a;
-    }
-    .sub {
-      font-size: 18px;
-      color: #475569;
-      line-height: 1.7;
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-    .cta-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      border: 1px solid #cbd5e1;
-      transition: .2s ease;
-    }
-    .btn-primary {
-      background: #1d4ed8;
-      color: white;
-      border-color: #1d4ed8;
-    }
-    .btn-primary:hover { background: #1e40af; }
-    .btn-secondary {
-      background: white;
-      color: #1e293b;
-    }
-    .btn-secondary:hover { background: #f8fafc; }
+
     .notice {
       display: inline-block;
       background: #e0f2fe;
@@ -94,58 +60,148 @@
       font-weight: 700;
       margin-bottom: 10px;
     }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      line-height: 1.15;
+      margin: 12px 0 16px;
+      color: #0f172a;
+    }
+
+    .sub {
+      font-size: 18px;
+      color: #475569;
+      line-height: 1.7;
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid #cbd5e1;
+      transition: .2s ease;
+      min-width: 200px;
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+      border-color: #1d4ed8;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #1e293b;
+    }
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
       margin-top: 28px;
     }
-    .card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
-    }
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      color: #0f172a;
-    }
-    .card p {
-      margin: 0;
-      color: #475569;
-      line-height: 1.6;
-      font-size: 15px;
-    }
-    .section {
-      margin-top: 28px;
-    }
+
     .trust {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #0f172a;
+    }
+
+    .card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
     ul.check {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     ul.check li {
       padding: 10px 0;
       color: #334155;
       border-bottom: 1px dashed #e2e8f0;
     }
+
+    .example-box {
+      margin-top: 12px;
+      padding: 14px 16px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      color: #334155;
+      line-height: 1.7;
+      font-size: 14px;
+      word-break: keep-all;
+    }
+
     .footer {
       margin: 26px 0 8px;
       text-align: center;
       color: #64748b;
       font-size: 14px;
     }
+
     @media (max-width: 860px) {
-      .feature-grid, .trust { grid-template-columns: 1fr; }
-      .hero { padding: 34px 20px; }
-      .topbar { align-items: flex-start; flex-direction: column; }
+      .feature-grid,
+      .trust {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 34px 20px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -162,35 +218,85 @@
         </div>
       </div>
 
-      <div class="notice">최신 기준 기반 AI 비자 상담</div>
+      <div class="notice">2026 기준 반영 AI 비자 자가진단</div>
+
       <h1>한국 비자 상담 & 자가진단</h1>
+
       <p class="sub">
-        E-7-4, E-9, F-2 등 비자 변경 가능 여부를 빠르게 확인하고,
-        필요한 경우 자가진단과 상담까지 한 번에 연결할 수 있는 테스트용 랜딩페이지입니다.
+        E-7-4, E-7-4R 비자 변경 가능 여부를 빠르게 확인하고,
+        점수 분석부터 상담 연결까지 한 번에 진행할 수 있습니다.
       </p>
 
       <div class="cta-group">
-        <a class="btn btn-primary" href="https://chatgpt.com/share/69c359a5-0ecc-83a7-b5bc-b49e787d2afe" target="_blank" rel="noopener noreferrer">자가진단 바로하기</a>
-        <a class="btn btn-secondary" href="https://open.kakao.com/o/sp4847mi" target="_blank" rel="noopener noreferrer">카카오톡 상담하기</a>
+        <a class="btn btn-primary" href="https://chatgpt.com/share/69c35e63-7250-83a4-a1b0-3fb3121b9f3d" target="_blank" rel="noopener noreferrer">1분 무료 자가진단 시작하기</a>
+        <a class="btn btn-secondary" href="https://open.kakao.com/o/sp4847mi" target="_blank" rel="noopener noreferrer">카카오톡 무료 상담하기</a>
       </div>
 
       <div class="card section">
-        <h3>무료 E-7-4 자가진단</h3>
-        <p>연봉, 나이, 한국어 등급, 근속기간을 입력하면 합격 가능성을 빠르게 확인할 수 있습니다.</p>
+        <h3>무료 E-7-4 / E-7-4R 자가진단</h3>
+        <p>
+          연봉, 나이, 한국어 등급, 기업추천, 근속기간, 읍면·인구감소지역 근무 여부를 입력하면
+          일반 기준과 한국어 유예 특례 가능성까지 빠르게 확인할 수 있습니다.
+        </p>
       </div>
 
       <div class="feature-grid">
         <div class="card">
-          <h3>빠른 가능 여부 확인</h3>
-          <p>방문자가 조건을 입력하면 비자 변경 가능성을 빠르게 점검할 수 있도록 구성했습니다.</p>
+          <h3>실무형 점수 분석</h3>
+          <p>
+            소득점수, 한국어점수, 나이점수, 기업추천점수, 근속점수,
+            읍면·인구감소지역 점수까지 한 번에 확인할 수 있습니다.
+          </p>
         </div>
+
+        <div class="card">
+          <h3>2026 기준 반영</h3>
+          <p>
+            한국어 유예 특례, 농업·축산업·어업 분야 소득 특례,
+            기업추천 필수 조건까지 반영한 안내용 테스트 페이지입니다.
+          </p>
+        </div>
+
         <div class="card">
           <h3>상담 전환 구조</h3>
-          <p>자가진단 후 카카오톡 상담 버튼으로 자연스럽게 연결되는 구조입니다.</p>
+          <p>
+            자가진단 후 카카오톡 상담으로 바로 연결되어
+            실제 진행 가능 여부와 준비서류를 이어서 안내받을 수 있습니다.
+          </p>
         </div>
-        <div class="card">
-          <h3>외국인 대상 안내</h3>
-          <p>향후 영어, 네팔어, 베트남어 등 다국어 확장이 가능한 형태입니다.</p>
+      </div>
+
+      <div class="card section">
+        <h3>입력 예시</h3>
+        <p>
+          아래처럼 한 줄로 입력하시면 됩니다.
+        </p>
+        <div class="example-box">
+          연봉 3200 / 직종분야 일반 / 나이 29 / 한국어 3급 / 고용기업추천 있음 / 현근무처 3년 이상 예 / 인구감소지역 또는 읍면지역 3년 이상 아니오
+        </div>
+      </div>
+
+      <div class="card section">
+        <h3>결과 안내</h3>
+        <p>
+          자가진단 결과에서는 총점, 소득점수, 한국어점수, 나이점수, 기업추천점수, 근속점수,
+          읍면·인구감소지역 점수, 감점 항목을 구분해서 확인할 수 있습니다.
+          또한 일반 기준 충족 여부와 2026.12.31.까지 적용되는 한국어 유예 특례 가능 여부도 함께 안내합니다.
+        </p>
+      </div>
+
+      <div class="card section">
+        <h3>결과에서 확인되는 핵심 항목</h3>
+        <div class="example-box">
+          - 소득점수<br>
+          - 한국어점수<br>
+          - 나이점수<br>
+          - 기업추천점수(+50)<br>
+          - 현 근무처 3년 이상 점수<br>
+          - 인구감소지역 또는 읍면지역 3년 이상 점수<br>
+          - 감점 여부<br>
+          - 일반 기준 충족 여부<br>
+          - 한국어 유예 특례 가능 여부
         </div>
       </div>
 
@@ -198,16 +304,17 @@
         <div class="card">
           <h3>신뢰 요소</h3>
           <ul class="check">
-            <li>✔ 실제 비자 진행 기준 상담</li>
-            <li>✔ 최신 출입국 기준 반영</li>
-            <li>✔ 외국인 맞춤 상담 가능</li>
+            <li>✔ E-7-4 / E-7-4R 기준 안내</li>
+            <li>✔ 2026 운영 기준 반영 테스트용</li>
+            <li>✔ 실제 상담 연결 가능</li>
           </ul>
         </div>
+
         <div class="card">
-          <h3>안내</h3>
+          <h3>상담이 필요하신가요?</h3>
           <p>
-            현재 페이지는 테스트용 구조입니다. 실제 운영 시에는 자가진단 링크, 카카오톡 링크,
-            성공 사례, 사업자 정보, 다국어 페이지를 추가해 서비스형 홈페이지로 확장할 수 있습니다.
+            자가진단 결과만으로 확정 판단이 어려운 경우,
+            카카오톡 상담으로 실제 진행 가능 여부와 준비서류를 안내해드립니다.
           </p>
         </div>
       </div>
